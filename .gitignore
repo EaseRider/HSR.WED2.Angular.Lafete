@@ -1,0 +1,18 @@
+# temporary files
+*~
+*.swp
+*.*-swp
+*.tmp.*
+
+# mac trash
+.DS_Store
+
+# linux trash
+*.lock
+*.bak
+.directory
+
+# ide trash
+/.idea/
+.settings
+.project
