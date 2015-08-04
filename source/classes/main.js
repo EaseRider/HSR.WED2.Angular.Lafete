@@ -1,4 +1,6 @@
 require.config({
+	// base url relative to the index.html
+	baseUrl: './',
 	paths: {
 		'angular': 'frameworks/angular/angular.min'
 	},
