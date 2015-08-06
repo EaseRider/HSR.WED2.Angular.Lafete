@@ -7,7 +7,7 @@ require.config({
 	},
 	// angular does not support async loading out of the box -> use the shim loader
 	shim: {
-		'angular': {
+		'frameworks/angular': {
 			exports: 'angular'
 		}
 	}
