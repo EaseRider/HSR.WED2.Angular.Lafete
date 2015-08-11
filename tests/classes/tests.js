@@ -3,24 +3,28 @@ require.config({
 	paths: {
 		'frameworks/angular': '../source/frameworks/angular/angular.min',
 		'app': '../source/classes',
-        'test': 'classes',
-		'jasmine': './libraries/jasmine/jasmine',
-		'jasmine-html': 'libraries/jasmine/jasmine-html',
-		'jasmine-boot': 'libraries/jasmine/boot'
+		'tests': 'classes',
+		'libraries/jasmine': ['libraries/jasmine/jasmine'],
+		'libraries/jasmine-html': ['libraries/jasmine/jasmine-html'],
+		'libraries/jasmine-boot': ['libraries/jasmine/boot']
 	},
 	shim: {
 		'frameworks/angular': {
-			exports: 'angular'
+			exports: ['angular']
 		},
-		'jasmine-html': {
-			deps : 'jasmine'
+		'libraries/jasmine-html': {
+			deps : ['libraries/jasmine']
 		},
-		'jasmine-boot': {
-			deps : ['jasmine', 'jasmine-html']
+		'libraries/jasmine-boot': {
+			deps : ['libraries/jasmine', 'libraries/jasmine-html']
 		}
 	}
 });
 
-require(['jasmine-boot'], function (JasmineBoot) {
-	window.onload();
+
+require(['libraries/jasmine-boot'], function () {
+	require(['tests/controllers/eventListControllerTest'], function(){
+		//trigger Jasmine
+		window.onload();
+	})
 });
