@@ -7,6 +7,11 @@
     <body>
 		<div data-ng-app="lafete">
 			<h1>Lafete</h1>
+			<ul data-ng-controller="EventListController">
+				<li data-ng-repeat="event in events">
+					{{event.name}}, {{event.place}}, {{event.date | date:"dd.MM.yy"}}
+				</li>
+			</ul>
 		</div>
 		<script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
 	<body>
