@@ -147,7 +147,6 @@ var requirejs, require, define;
             return value;
         }
         var g = global;
-        console.log(value);
         each(value.split('.'), function (part) {
             g = g[part];
         });
