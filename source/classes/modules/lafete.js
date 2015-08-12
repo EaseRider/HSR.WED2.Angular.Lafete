@@ -1,9 +1,16 @@
-define(['frameworks/angular', 'app/controllers/eventListController'],
-	function (Angular, EventListController) {
-		'use strict';
+define(['frameworks/angular', 'app/controllers/eventListController', 'app/services/storageService'],
+	function (Angular, EventListController, StorageService) {
+	'use strict';
+
+	/* modules */
 	var Lafete = Angular.module('lafete', []);
+
+	/* services */
+	Lafete.service('StorageService', StorageService);
+
+	/* controllers */
+	EventListController.$inject = ['$scope', 'StorageService'];
 	Lafete.controller('EventListController', EventListController);
-	EventListController.$inject = ['$scope'];
 
 	return Lafete;
 });
