@@ -12,5 +12,16 @@ define(['frameworks/angular', 'app/controllers/eventListController', 'app/servic
 	EventListController.$inject = ['$scope', 'StorageService'];
 	Lafete.controller('EventListController', EventListController);
 
+	/* routes */
+	Lafete.config(function($routeProvider) {
+		$routeProvider.when('/list', {
+			controller: 'EventListController',
+			templateUrl: '/views/list.html'
+		})
+		.otherwise({
+			redirectTo: '/list'
+		});
+	});
+
 	return Lafete;
 });
