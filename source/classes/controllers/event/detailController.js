@@ -1,10 +1,10 @@
-define(['app/model/event'], function(Event) {
+define([], function() {
 	'use strict';
 
 	var EventDetailController = function($scope, $routeParams, storageService) {
 		this.scope = $scope;
-		this.scope.event = storageService.events;
+		this.scope.event = storageService.events.get($routeParams.eventId);
 	}
 
-	return EventListController;
+	return EventDetailController;
 });

@@ -1,7 +1,7 @@
 <h1>Lafete</h1>
-<ul data-ng-controller="EventListController">
+<ul>
 	<li data-ng-repeat="event in events">
-		<strong>{{event.name}}</strong><br />
+		<a data-ng-href="#/events/{{event.id}}"><strong>{{event.name}}</strong></a><br />
 		{{event.location.name}}, {{event.location.street}}, {{event.location.plz}} {{event.location.city}}<br />
 		{{event.event.begin | date:"dd.MM.yy HH:mm"}} - {{event.event.end | date:"dd.MM.yy HH:mm"}}
 	</li>
