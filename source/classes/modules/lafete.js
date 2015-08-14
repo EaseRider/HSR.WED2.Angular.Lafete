@@ -1,4 +1,4 @@
-define(['frameworks/angular', 'app/controllers/eventListController', 'app/services/storageService', 'libraries/angularRoute'],
+define(['frameworks/angular', 'app/controllers/event/listController', 'app/services/storageService', 'libraries/angularRoute'],
 	function (Angular, EventListController, StorageService) {
 	'use strict';
 
