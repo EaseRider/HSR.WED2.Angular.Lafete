@@ -1,4 +1,5 @@
-define(['app/model/event'], function (Event) {
+define(['tests/factories/eventFactory','app/model/event'],
+	function(EventFactory, Event) {
 	'use strict';
 
 	describe('Event test suite', function() {
@@ -6,24 +7,7 @@ define(['app/model/event'], function (Event) {
 
 		// setup
 		beforeEach(function() {
-			event = new Event(
-				'Simons birthday',
-				'The greatest birthday party simon ever had',
-				'Friends of Simon',
-				'drinks, cake, salad or snacks',
-				{
-					name: 'Simons house',
-					street: 'Main street 5',
-					zipCode: 8000,
-					city: 'Zurich'
-				},
-				null,
-				{
-					begin: new Date('2015-10-10T18:00:00.000Z'),
-					end: new Date('2015-10-11T02:00:00.000Z')
-				},
-				null
-			);
+			event = EventFactory.createEvent();
  		});
 
 		it('Expects changed event begin on set begin', function() {
