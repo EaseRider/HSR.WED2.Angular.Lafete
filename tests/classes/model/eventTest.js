@@ -41,5 +41,10 @@ define(['app/model/event'], function (Event) {
 			expect(event.end)
 				.toEqual(new Date('2015-10-11T04:00:00.000Z'));
 		});
+
+		it('Expects event id to be UUID', function() {
+			var uuidRegex = new RegExp('[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}');
+			expect(event.id).toMatch(uuidRegex);
+		});
 	});
 });

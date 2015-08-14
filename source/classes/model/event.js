@@ -1,7 +1,8 @@
-define([], function() {
+define(['app/services/uuidService'], function(UUIDService) {
 	'use strict';
 
 	var Event = function(name, description, targetGroup, eventGift, location, preparation, event, maximalAmoutOfGuests) {
+		this.id = UUIDService.getRandomUuid();
 		this.name = name;
 		this.description = description;
 		this.targetGroup = targetGroup;
