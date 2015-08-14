@@ -2,7 +2,7 @@ define(['app/model/event'], function (Event) {
     'use strict';
 
     var EventFactory = {
-        createEvent: function() {
+        createEvent: function(identifier) {
             return new Event(
                 'Simons birthday',
                 'The greatest birthday party simon ever had',
@@ -19,7 +19,8 @@ define(['app/model/event'], function (Event) {
                     begin: new Date('2015-10-10T18:00:00.000Z'),
                     end: new Date('2015-10-11T02:00:00.000Z')
                 },
-                null
+                null,
+                identifier
             );
         }
     };

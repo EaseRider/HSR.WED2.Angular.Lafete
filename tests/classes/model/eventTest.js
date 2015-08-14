@@ -29,6 +29,9 @@ define(['tests/factories/eventFactory','app/model/event'],
 		it('Expects event id to be UUID', function() {
 			var uuidRegex = new RegExp('[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}');
 			expect(event.id).toMatch(uuidRegex);
+
+			var eventPredefinedId = EventFactory.createEvent('76ba7b42-0534-4d1f-9c0c-5b07488b0c2c');
+			expect(eventPredefinedId.id).toBe('76ba7b42-0534-4d1f-9c0c-5b07488b0c2c');
 		});
 	});
 });

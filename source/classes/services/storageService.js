@@ -60,7 +60,8 @@ define(['app/model/event'], function(Event) {
 					begin: new Date('2015-10-10T12:00:00.000Z'),
 					end: new Date('2015-10-10T13:00:00.000Z')
 				},
-				null
+				null,
+				'76ba7b42-0534-4d1f-9c0c-5b07488b0c2c'
 			)
 		);
 		this.events.add(
@@ -80,7 +81,8 @@ define(['app/model/event'], function(Event) {
 					begin: new Date('2015-04-05T18:00:00.000Z'),
 					end: new Date('2015-04-05T20:00:00.000Z')
 				},
-				null
+				null,
+				'e27726fa-5334-41d1-8db0-f3d9510fcf89'
 			)
 		);
 		this.events.add(
@@ -100,7 +102,8 @@ define(['app/model/event'], function(Event) {
 					begin: new Date('2015-12-08T17:00:00.000Z'),
 					end: new Date('2015-12-08T19:00:00.000Z')
 				},
-				null
+				null,
+				'39f0881d-ce23-44e9-81c3-1c8157380894'
 			)
 		);
 	};
