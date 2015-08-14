@@ -28,9 +28,9 @@ define(['app/model/event'], function(Event) {
 				});
 			};
 			/**
-			 * Add event if not already added
+			 * Add event if not already in list
 			 * @param Event event
-			 * @return boolean if adding was successfull
+			 * @return boolean if added successfull
 			 */
 			this.add = function(event) {
 				if(eventList.hasOwnProperty(event.id)) {
