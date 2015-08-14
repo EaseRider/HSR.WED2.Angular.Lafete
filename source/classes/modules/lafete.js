@@ -19,11 +19,11 @@ define(['frameworks/angular', 'app/controllers/event/listController', 'app/contr
 	Lafete.config(function($routeProvider) {
 		$routeProvider.when('/list', {
 			controller: 'EventListController',
-			templateUrl: '/views/list.html'
+			templateUrl: '/views/event/list.html'
 		})
 		.when('/events/:eventId', {
 			controller: 'EventDetailController',
-			templateUrl: '/views/detail.html'
+			templateUrl: '/views/event/detail.html'
 		})
 		.otherwise({
 			redirectTo: '/list'
