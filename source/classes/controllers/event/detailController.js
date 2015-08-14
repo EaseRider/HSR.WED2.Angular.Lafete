@@ -3,7 +3,7 @@ define(['app/model/event'], function(Event) {
 
 	var EventDetailController = function($scope, $routeParams, storageService) {
 		this.scope = $scope;
-		this.scope.events = storageService.events;
+		this.scope.event = storageService.events;
 	}
 
 	return EventListController;
