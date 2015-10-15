@@ -16,7 +16,7 @@ define(['app/services/uuidService'], function(UUIDService) {
 				return this.times.begin;
 			},
 			set: function(begin) {
-				this.event.times = begin;
+				this.times.begin = begin;
 			}
 		});
 

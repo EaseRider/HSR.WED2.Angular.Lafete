@@ -8,6 +8,7 @@ define(['tests/factories/eventFactory','app/model/event'],
 		// setup
 		beforeEach(function() {
 			event = EventFactory.createEvent();
+			console.log(event);
  		});
 
 		it('Expects changed event begin on set begin', function() {
