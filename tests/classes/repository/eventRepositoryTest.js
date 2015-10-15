@@ -2,7 +2,7 @@ define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/event
 	function (EventFactory, Event, EventRepository) {
 	'use strict';
 
-	describe('EventRepository test suite', function() {
+	describe('EventRepository', function() {
 		var event, eventRepository;
 
 		// setup
@@ -11,28 +11,55 @@ define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/event
 			event = EventFactory.createEvent();
  		});
 
-		it('Expects return event or null', function() {
-			eventRepository.add(event);
-			console.log(eventRepository.events);
-			expect(eventRepository.get(event.id)).toEqual(event);
 
-			expect(eventRepository.get('')).toEqual(null);
-			expect(eventRepository.get('abvhf74n6')).toEqual(null);
+		describe('get()', function() {
+			beforeEach(function() {
+				eventRepository.add(event);
+			});
+
+			describe('by object id', function() {
+				it('returns the object', function() {
+					expect(eventRepository.get(event.id)).toEqual(event);
+				});
+			});
+
+			describe('by inexistent object id', function() {
+				it('returns null', function() {
+					expect(eventRepository.get(null)).toEqual(null);
+					expect(eventRepository.get('abvhf74n6')).toEqual(null);
+				});
+			});
 		});
 
-		it('Expects return of all() is Array', function() {
-			expect(eventRepository.all() instanceof Array).toBe(true);
+		describe('all()', function() {
+			it('returns an Array', function() {
+				expect(eventRepository.all()).toEqual(jasmine.any(Array));
+			});
 		});
 
-		it('Expects add() will add element only once', function() {
-			var status1 = eventRepository.add(event);
-			expect(status1).toBe(true);
+		describe('add()', function() {
+			it('inserts element', function() {
+				var status1 = eventRepository.add(event);
+				expect(status1).toBe(true);
+			});
 
-			var size = eventRepository.all().length;
-			var status2 = eventRepository.add(event);
+			describe('same element again', function() {
+				var size, status2;
 
-			expect(eventRepository.all().length).toBe(size);
-			expect(status2).toBe(false);
+				beforeEach(function() {
+					eventRepository.add(event);
+
+					size = eventRepository.all().length;
+					status2 = eventRepository.add(event);
+				});
+
+				it('doesn\'t affect repository size', function() {
+					expect(eventRepository.all().length).toBe(size);
+				});
+				it('returns false', function() {
+					expect(status2).toBe(false);
+				});
+			});
 		});
 	});
 });
