@@ -1,16 +1,27 @@
-define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/eventRepository'],
-	function (EventFactory, Event, EventRepository) {
+define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/eventRepository', 'libraries/angularMocks'],
+	function (EventFactory, Event, EventRepository, AngularMocks) {
 	'use strict';
 
 	describe('EventRepository', function() {
-		var event, eventRepository;
+		var event, eventRepository, $http, $httpBackend;
 
 		// setup
-		beforeEach(function() {
-			eventRepository = new EventRepository();
-			event = EventFactory.createEvent();
- 		});
+		beforeEach(AngularMocks.inject(function($injector) {
+			$http = $injector.get('$http');
+			$httpBackend = $injector.get('$httpBackend');
 
+			eventRepository = new EventRepository($http);
+			event = EventFactory.createEvent();
+
+			$httpBackend.when('GET', eventRepository.urls.all).respond({
+				events: [{id: 1, name: 'Party'},{id: 2, name: 'Concert'}]
+			});
+		}));
+
+		afterEach(function() {
+			$httpBackend.verifyNoOutstandingExpectation();
+			$httpBackend.verifyNoOutstandingRequest();
+		});
 
 		describe('get()', function() {
 			beforeEach(function() {
@@ -33,7 +44,23 @@ define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/event
 
 		describe('all()', function() {
 			it('returns an Array', function() {
-				expect(eventRepository.all()).toEqual(jasmine.any(Array));
+				$httpBackend.expectGET(eventRepository.urls.all);
+				var events = null;
+				eventRepository.all(function(eventList) {
+					events = eventList;
+				});
+				$httpBackend.flush();
+				expect(events).toEqual(jasmine.any(Array));
+			});
+
+			it('returns two events', function() {
+				$httpBackend.expectGET(eventRepository.urls.all);
+				var events = null;
+				eventRepository.all(function(eventList) {
+					events = eventList;
+				});
+				$httpBackend.flush();
+				expect(events.length).toEqual(2);
 			});
 		});
 
@@ -49,12 +76,12 @@ define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/event
 				beforeEach(function() {
 					eventRepository.add(event);
 
-					size = eventRepository.all().length;
+					size = eventRepository.events.length;
 					status2 = eventRepository.add(event);
 				});
 
 				it('doesn\'t affect repository size', function() {
-					expect(eventRepository.all().length).toBe(size);
+					expect(eventRepository.events.length).toBe(size);
 				});
 				it('returns false', function() {
 					expect(status2).toBe(false);

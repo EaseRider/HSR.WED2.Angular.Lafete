@@ -1,15 +1,25 @@
 define(['app/model/event'], function(Event) {
 	'use strict';
 
-	var EventRepository = function() {
+	var EventRepository = function($http) {
+		this.urls = {
+			all: '/api/events',
+			get: '/api/events/{eventId}',
+			add: '/api/events'
+		}
+
 		this.events = [];
+
 		/**
 		 * Get all events
 		 *
 		 * @return Event[]
 		 */
-		this.all = function() {
-			return this.events;
+		this.all = function(successCallback) {
+			$http.get(this.urls.all)
+				.success(function(data) {
+					successCallback(data.events);
+				});
 		};
 		/**
 		 * Find event by identifier

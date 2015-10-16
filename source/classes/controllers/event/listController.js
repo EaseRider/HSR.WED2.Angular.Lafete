@@ -1,10 +1,12 @@
 define(['app/model/event'], function(Event) {
 	'use strict';
 
-	var EventListController = function($scope, EventRepository) {
+	var EventListController = function($scope, eventRepository) {
 		this.scope = $scope;
-		this.scope.events = EventRepository.all();
-	}
+		eventRepository.all(function(events) {
+			this.scope.events = events;
+		}.bind(this));
+	};
 
 	return EventListController;
 });
