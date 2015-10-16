@@ -4,7 +4,7 @@ define(['app/model/event'], function(Event) {
 	var EventRepository = function($http) {
 		this.urls = {
 			all: '/api/events',
-			get: '/api/events/{eventId}',
+			get: '/api/events/:eventId',
 			add: '/api/events'
 		}
 
@@ -18,7 +18,11 @@ define(['app/model/event'], function(Event) {
 		this.all = function(successCallback) {
 			$http.get(this.urls.all)
 				.success(function(data) {
-					successCallback(data.events);
+					// map applys a function on every element in the array and returns the result as new array
+					var events = data.events.map(function(eventDTO) {
+						return Event.createFromDTO(eventDTO);
+					});
+					successCallback(events);
 				});
 		};
 		/**

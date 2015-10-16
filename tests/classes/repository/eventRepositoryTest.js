@@ -62,6 +62,17 @@ define(['tests/factories/eventFactory', 'app/model/event', 'app/repository/event
 				$httpBackend.flush();
 				expect(events.length).toEqual(2);
 			});
+
+			it('returns real javascript objects', function() {
+					$httpBackend.expectGET(eventRepository.urls.all);
+					var events = null;
+					eventRepository.all(function(eventList) {
+						events = eventList;
+					});
+					$httpBackend.flush();
+					expect(events[0]).toEqual(jasmine.any(Event));
+					expect(events[1]).toEqual(jasmine.any(Event));
+			});
 		});
 
 		describe('add()', function() {
