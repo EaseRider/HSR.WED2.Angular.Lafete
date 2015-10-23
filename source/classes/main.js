@@ -18,5 +18,7 @@ require.config({
 });
 
 require(['frameworks/angular', 'app/modules/lafete'], function (Angular, Lafete) {
-	Angular.bootstrap(document, [Lafete.name]);
+	Angular.element(document).ready(function() {
+		Angular.bootstrap(document, [Lafete.name]);
+	});
 });
