@@ -1,3 +1,6 @@
+# node filed
+node_modules
+
 # temporary files
 *~
 *.swp
