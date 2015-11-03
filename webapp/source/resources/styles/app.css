@@ -1,0 +1,143 @@
+/**
+ * containers
+ */
+* {
+	box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box;
+}
+html, body {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	/**
+	 * https://flic.kr/p/onxgfi CC 2.0 BY SA (https://creativecommons.org/licenses/by-sa/2.0/)
+	 * by Thorsten Krienke (https://www.flickr.com/photos/krienke/)
+	 */
+	background: url('../../resources/images/background.jpg') no-repeat center center;
+	background-size: cover;
+	padding: 0.5rem;
+}
+
+.app {
+	margin: 0;
+	padding: 0.5rem;
+	background: rgba(0,0,0,0.75);
+	border: 0.1rem solid rgba(200,200,200,0.5);
+	border-radius: 1rem;
+	color: white;
+	overflow-y: auto;
+	height: 100%;
+	text-align: center;
+}
+
+/**
+ * font
+ */
+h1 { display: none; }
+h2 {
+	margin: 0;
+	width: 100%;
+	text-align: center;
+}
+h3 {
+	margin: 0;
+	padding-top: 0.5rem;
+	padding-bottom: 0.1rem;
+}
+p { margin: 0.2rem 0; }
+
+
+/**
+ * lists
+ */
+ ul {
+	 margin: 0;
+	 padding: 0;
+ }
+ ul > li, .pane {
+	 margin: 0;
+	 padding: 0;
+	 text-align: center;
+	 margin: 0.25rem 0;
+	 border-left: none;
+	 border-right: none;
+	 background: linear-gradient(to right, rgba(0,0,0,0), black, rgba(0,0,0,0));
+ }
+ ul > li > a {
+	 display: inline-block;
+	 padding: 0.25rem 0;
+ }
+ ul > li::before, ul > li::after, .pane::before, .pane::after {
+	 content: "";
+	 display: block;
+	 width: 100%;
+	 height: 0.05rem;
+	 background: linear-gradient(to right, rgba(0,0,0,0), rgba(200,200,200,0.5), rgba(0,0,0,0));
+ }
+
+ /**
+  * links
+  */
+a, a:link, a:visited {
+	 color: white;
+	 text-decoration: none;
+ }
+li > a:hover {
+	color: silver;
+}
+a {
+	color: white;
+}
+
+/**
+ * forms/buttons
+ */
+ .button, input[type="submit"] {
+	font-size: 1.4rem;
+	background: linear-gradient(seagreen, darkgreen);
+	padding: 0.25rem 1rem;
+ }
+.button.add {
+	border-radius: 1rem 0 1rem 0;
+	float: left;
+	margin-left: -0.5rem;
+	margin-top: -0.5rem;
+}
+form {
+	padding: 0.5rem;
+}
+.formline > * {
+	display: block;
+	width: 100%;
+}
+.formline > input {
+	padding: 1.5rem 0;
+	width: 100%;
+	border: none;
+	background: linear-gradient(gray, silver);
+	border-radius: 1rem;
+	margin: 0.5rem 0;
+	padding: 0.25rem;
+}
+.formline > input[type="submit"] {
+	background: linear-gradient(seagreen, darkgreen);
+	color: white;
+	margin-top: 1rem;
+}
+.formline.inline {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+.formline.inline.col-6-2-2 > * {
+	flex-grow: 2;
+}
+.formline.inline > *:first-child {
+	flex-grow: 6;
+}
