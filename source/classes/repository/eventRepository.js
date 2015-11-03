@@ -18,12 +18,11 @@ define(['app/model/event'], function(Event) {
 				})
 				.error(errorCallback);
 		};
-		
+
 		/**
 		 * Find event by identifier
 		 *
 		 * @param string identifier
-		 * @return Event or null
 		 */
 		this.get = function(event, successCallback, errorCallback) {
 			$http.get(Configuration.urls.byId.replace('{eventId}', event.id))
@@ -32,7 +31,7 @@ define(['app/model/event'], function(Event) {
 				})
 				.error(errorCallback);
 		};
-		
+
 		/**
 		 * Add event
 		 * @param Event event
