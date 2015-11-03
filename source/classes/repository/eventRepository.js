@@ -4,7 +4,7 @@ define(['app/model/event'], function(Event) {
 	var EventRepository = function($http) {
 		this.urls = {
 			all: '/api/events',
-			get: '/api/events/:eventId',
+			event: '/api/events/{eventId}',
 			add: '/api/events'
 		}
 
@@ -15,7 +15,7 @@ define(['app/model/event'], function(Event) {
 		 *
 		 * @return Event[]
 		 */
-		this.all = function(successCallback) {
+		this.all = function(successCallback, errorCallback) {
 			$http.get(this.urls.all)
 				.success(function(data) {
 					// map applys a function on every element in the array and returns the result as new array
@@ -23,7 +23,8 @@ define(['app/model/event'], function(Event) {
 						return Event.createFromDTO(eventDTO);
 					});
 					successCallback(events);
-				});
+				})
+				.error(errorCallback);
 		};
 		/**
 		 * Find event by identifier
@@ -31,11 +32,12 @@ define(['app/model/event'], function(Event) {
 		 * @param string identifier
 		 * @return Event or null
 		 */
-		this.get = function(identifier) {
-			var event = this.events.filter(function(event) {
-		        return event.id == identifier
-		    })[0];
-			return (event) ? event : null;
+		this.get = function(event, successCallback, errorCallback) {
+			$http.get(this.urls.event.replace('{eventId}', event.id))
+				.success(function(eventDTO) {
+					successCallback(Event.createFromDTO(eventDTO));
+				})
+				.error(errorCallback);
 		};
 		/**
 		 * Add event if not already in list
