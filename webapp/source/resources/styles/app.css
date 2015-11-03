@@ -101,7 +101,7 @@ a {
 	background: linear-gradient(seagreen, darkgreen);
 	padding: 0.25rem 1rem;
  }
-.button.add,  {
+.button.add {
 	border-radius: 1rem 0 1rem 0;
 	float: left;
 	margin-left: -0.5rem;
@@ -110,11 +110,11 @@ a {
 form {
 	padding: 0.5rem;
 }
-.formline * {
+.formline > * {
 	display: block;
 	width: 100%;
 }
-.formline input {
+.formline > input {
 	padding: 1.5rem 0;
 	width: 100%;
 	border: none;
@@ -123,8 +123,21 @@ form {
 	margin: 0.5rem 0;
 	padding: 0.25rem;
 }
-.formline input[type="submit"] {
+.formline > input[type="submit"] {
 	background: linear-gradient(seagreen, darkgreen);
 	color: white;
 	margin-top: 1rem;
+}
+.formline.inline {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+.formline.inline.col-6-2-2 > * {
+	flex-grow: 2;
+}
+.formline.inline > *:first-child {
+	flex-grow: 6;
 }
