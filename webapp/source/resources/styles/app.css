@@ -1,0 +1,94 @@
+/**
+ * containers
+ */
+* {
+	box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box;
+}
+html, body {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	/**
+	 * https://flic.kr/p/onxgfi CC 2.0 BY SA (https://creativecommons.org/licenses/by-sa/2.0/)
+	 * by Thorsten Krienke (https://www.flickr.com/photos/krienke/)
+	 */
+	background: url('../../resources/images/background.jpg') no-repeat center center;
+	background-size: cover;
+	padding: 0.5rem;
+}
+
+.app {
+	margin: 0;
+	padding: 0.5rem;
+	background: rgba(0,0,0,0.75);
+	border: 0.1rem solid rgba(200,200,200,0.5);
+	border-radius: 1rem;
+	color: white;
+	overflow-y: auto;
+	height: 100%;
+	text-align: center;
+}
+
+/**
+ * font
+ */
+h1 { display: none; }
+h2 {
+	margin: 0;
+	width: 100%;
+	text-align: center;
+}
+h3 {
+	margin: 0;
+	padding-top: 0.5rem;
+	padding-bottom: 0.1rem;
+}
+p { margin: 0.2rem 0; }
+
+
+/**
+ * lists
+ */
+ ul {
+	 margin: 0;
+	 padding: 0;
+ }
+ ul > li, .pane {
+	 margin: 0;
+	 padding: 0;
+	 text-align: center;
+	 margin: 0.25rem 0;
+	 border-left: none;
+	 border-right: none;
+	 background: linear-gradient(to right, rgba(0,0,0,0), black, rgba(0,0,0,0));
+ }
+ ul > li > a {
+	 display: inline-block;
+	 padding: 0.25rem 0;
+ }
+ ul > li::before, ul > li::after, .pane::before, .pane::after {
+	 content: "";
+	 display: block;
+	 width: 100%;
+	 height: 0.05rem;
+	 background: linear-gradient(to right, rgba(0,0,0,0), rgba(200,200,200,0.5), rgba(0,0,0,0));
+ }
+
+ /**
+  * links
+  */
+ li > a,  li > a:link, li > a:visited {
+	 color: white;
+	 text-decoration: none;
+ }
+li > a:hover {
+	color: silver;
+}
+nav a {
+	color: white;
+}
