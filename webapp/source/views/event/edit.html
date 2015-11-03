@@ -1,0 +1,48 @@
+<nav>
+	&larr; <a href="#/">Events</a>
+</nav>
+<h2>Event</h2>
+<form class="pane">
+	<div class="formline">
+		<label>name</label>
+		<input type="text" data-ng-model="event.name" />
+	</div>
+
+	<div class="formline">
+		<label>Description</label>
+		<input type="text" data-ng-model="event.description" />
+	</div>
+
+	<div class="formline">
+		<label>Maximal amount of guests</label>
+		<input type="number" data-ng-model="event.maximalAmoutOfGuests" />
+	</div>
+
+	<div class="formline">
+		<label>Target group</label>
+		<input type="text" data-ng-model="event.targetGroup" />
+	</div>
+
+	<div class="formline">
+		<label>Event contribution</label>
+		<input type="text" data-ng-model="event.eventGift" />
+	</div>
+
+	<div class="formline">
+		<label>Location</label>
+		<input type="text" data-ng-model="event.location.name" placeholder="Name" />
+		<input type="text" data-ng-model="event.location.street" placeholder="Street" />
+		<input type="text" data-ng-model="event.location.plz" placeholder="ZIP Code" />
+		<input type="text" data-ng-model="event.location.city" placeholder="City" />
+	</div>
+
+	<div class="formline">
+		<label>Date &amp; Times</label>
+		<input  data-ng-model="event.times.begin" placeholder="begin, e.g. 1990-12-31T23:59:60Z"  type="datetime" />
+		<input  data-ng-model="event.times.end" placeholder="end, e.g. 1990-12-31T23:59:60Z"  type="datetime" />
+	</div>
+	
+	<div class="formline">
+		<input type="submit" data-ng-click="add" value="Save" />
+	</div>
+</form>
