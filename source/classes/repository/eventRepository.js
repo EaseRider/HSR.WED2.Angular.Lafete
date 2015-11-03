@@ -1,20 +1,14 @@
 define(['app/model/event'], function(Event) {
 	'use strict';
 
-	var EventRepository = function($http) {
-		this.urls = {
-			all: '/api/events',
-			event: '/api/events/{eventId}',
-			add: '/api/events'
-		}
-
+	var EventRepository = function($http, Configuration) {
 		/**
 		 * Get all events
 		 *
 		 * @return Event[]
 		 */
 		this.all = function(successCallback, errorCallback) {
-			$http.get(this.urls.all)
+			$http.get(Configuration.urls.all)
 				.success(function(data) {
 					// map applys a function on every element in the array and returns the result as new array
 					var events = data.events.map(function(eventDTO) {
@@ -32,7 +26,7 @@ define(['app/model/event'], function(Event) {
 		 * @return Event or null
 		 */
 		this.get = function(event, successCallback, errorCallback) {
-			$http.get(this.urls.event.replace('{eventId}', event.id))
+			$http.get(Configuration.urls.byId.replace('{eventId}', event.id))
 				.success(function(eventDTO) {
 					successCallback(Event.createFromDTO(eventDTO));
 				})
@@ -44,7 +38,7 @@ define(['app/model/event'], function(Event) {
 		 * @param Event event
 		 */
 		this.add = function(event, successCallback, errorCallback) {
-			$http.post(this.urls.add, event)
+			$http.post(Configuration.urls.add, event)
 				.success(function(eventDTO) {
 					successCallback(Event.createFromDTO(eventDTO));
 				})
