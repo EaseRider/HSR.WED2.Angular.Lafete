@@ -5,12 +5,12 @@
 <form class="pane">
 	<div class="formline">
 		<label>name</label>
-		<input type="text" data-ng-model="event.name" />
+		<input type="text" data-ng-model="event.name" required />
 	</div>
 
 	<div class="formline">
 		<label>Description</label>
-		<input type="text" data-ng-model="event.description" />
+		<input type="text" data-ng-model="event.description" required />
 	</div>
 
 	<div class="formline">
@@ -24,22 +24,22 @@
 	</div>
 
 	<div class="formline">
-		<label>Event contribution</label>
-		<input type="text" data-ng-model="event.eventGift" />
+		<label>Event contribution description</label>
+		<input type="text" data-ng-model="event.contributionsDescription" />
 	</div>
 
 	<div class="formline">
 		<label>Location</label>
-		<input type="text" data-ng-model="event.location.name" placeholder="Name" />
-		<input type="text" data-ng-model="event.location.street" placeholder="Street" />
-		<input type="text" data-ng-model="event.location.plz" placeholder="ZIP Code" />
-		<input type="text" data-ng-model="event.location.city" placeholder="City" />
+		<input type="text" data-ng-model="event.location.name" placeholder="Name" required />
+		<input type="text" data-ng-model="event.location.street" placeholder="Street" required />
+		<input type="text" data-ng-model="event.location.plz" placeholder="ZIP Code" required/>
+		<input type="text" data-ng-model="event.location.city" placeholder="City" required/>
 	</div>
 
 	<div class="formline">
 		<label>Date &amp; Times</label>
 		<div class="formline inline col-6-2-2">
-			<input type="date" data-ng-model="event.times.begin.date" placeholder="begin, e.g. 1990-12-30" />
+			<input type="date" data-ng-model="event.times.begin.date" placeholder="begin, e.g. 1990-12-30" required />
 
 			<select class="hours" data-ng-model="event.times.begin.time.hours"
 			 	data-ng-init="event.times.begin.time.hours = hours[12]"
@@ -49,10 +49,10 @@
 				data-ng-options="minute for minute in minutes"></select>
 		</div>
 		<div class="formline inline col-6-2-2">
-			<input  data-ng-model="event.times.end.date" placeholder="end, e.g. 1990-12-31"  type="date" />
+			<input  data-ng-model="event.times.end.date" placeholder="end, e.g. 1990-12-31"  type="date" required />
 
 			<select class="hours" data-ng-model="event.times.end.time.hours"
-			 	data-ng-init="event.times.end.time.hours = hours[12]"
+			 	data-ng-init="event.times.end.time.hours = hours[13]"
 				data-ng-options="hour for hour in hours"></select>
 			<select class="minutes" data-ng-model="event.times.end.time.minutes"
 			 	data-ng-init="event.times.end.time.minutes = minutes[0]"
